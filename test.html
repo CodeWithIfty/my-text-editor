@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dynamic Text Size Editor</title>
+    <style>
+        #myTextarea {
+            width: 100%;
+            height: 200px;
+            font-size: 16px; /* Default font size */
+        }
+    </style>
+</head>
+<body>
+    <textarea id="myTextarea" rows="5" cols="40">Type your text here...</textarea>
+    <input type="number" id="fontSizeInput" placeholder="Enter font size">
+    
+    <script>
+        // Get references to the textarea and input
+        const textarea = document.getElementById('myTextarea');
+        const fontSizeInput = document.getElementById('fontSizeInput');
+
+        // Add input event listener to the input field
+        fontSizeInput.addEventListener('input', function() {
+            const newSize = parseInt(fontSizeInput.value, 10);
+            if (!isNaN(newSize)) {
+                updateFontSize(newSize);
+            }
+        });
+
+        // Function to update font size of the textarea
+        function updateFontSize(newSize) {
+            if (newSize < 10) {
+                newSize = 10; // Minimum font size
+            }
+            textarea.style.fontSize = newSize + 'px';
+        }
+    </script>
+</body>
+</html>
